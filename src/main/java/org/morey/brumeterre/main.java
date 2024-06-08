@@ -12,6 +12,7 @@ public final class main extends JavaPlugin {
     public void onEnable() {
 
         log.info("Brumeterre started.");
+        //ttest
 
     }
 
