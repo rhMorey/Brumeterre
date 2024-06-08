@@ -1,0 +1,4 @@
+name: brumeterre
+version: '${project.version}'
+main: org.morey.brumeterre.main
+api-version: '1.20'
