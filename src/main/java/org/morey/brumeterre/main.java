@@ -3,6 +3,7 @@ package org.morey.brumeterre;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.morey.brumeterre.capture.capture;
 import org.morey.brumeterre.capture.regions.commands.resetAllZone;
+import org.morey.brumeterre.capture.regions.regionsSpecifications;
 import org.morey.brumeterre.capture.regions.test1;
 import org.morey.brumeterre.capture.regions.test2;
 import org.morey.brumeterre.utils.enhanceServer;
@@ -17,7 +18,7 @@ public final class main extends JavaPlugin {
     //
     //
     //
-    public String version = "v0.1";
+    public String version = "v0.2";
     //
     //
     //
@@ -37,6 +38,7 @@ public final class main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new capture(), this);
         getServer().getPluginManager().registerEvents(new test1(), this);
         getServer().getPluginManager().registerEvents(new test2(), this);
+        getServer().getPluginManager().registerEvents(new regionsSpecifications(), this);
 
 
     }
