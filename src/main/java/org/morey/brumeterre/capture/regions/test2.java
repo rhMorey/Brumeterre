@@ -13,9 +13,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.morey.brumeterre.capture.capture;
 
-public class test1 implements Listener {
+public class test2 implements Listener {
 
-    private String regionName = "test1";
+    private String regionName = "test2";
     @EventHandler
     public void onBreakObsidianInZone(BlockBreakEvent event)
     {

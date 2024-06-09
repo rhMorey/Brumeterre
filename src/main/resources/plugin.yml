@@ -2,3 +2,8 @@ name: brumeterre
 version: '${project.version}'
 main: org.morey.brumeterre.main
 api-version: '1.20'
+commands:
+  resetzone:
+    description: Permet de reset les zones capturés
+    permission-message: §cVous n'avez pas la permission.
+    permission: brumeterre.resetzone

@@ -14,6 +14,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import java.util.UUID;
+
+import static org.morey.brumeterre.main.plugin;
+
 public class capture implements Listener {
 
     @EventHandler
@@ -28,6 +32,17 @@ public class capture implements Listener {
         {
             event.setCancelled(true);
         }*/
+    }
+
+    public static void setZoneOwner(String zone, Player player)
+    {
+        plugin.getConfig().set("data." + zone, player.getUniqueId().toString());
+        plugin.saveConfig();
+    }
+
+    public static String getZoneOwner(String zone)
+    {
+        return (String) plugin.getConfig().get("data." + zone);
     }
 
     /*public String getZone(Player player, RegionManager regions, String region)
