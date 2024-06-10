@@ -20,20 +20,6 @@ import static org.morey.brumeterre.main.plugin;
 
 public class capture implements Listener {
 
-    @EventHandler
-    public void onBreakCopper(BlockBreakEvent event)
-    {
-        Player player = event.getPlayer();
-        World w = BukkitAdapter.adapt(player.getWorld());
-        RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
-        RegionManager regions = container.get(w);
-
-        /*if(event.getBlock().getType().equals(Material.OBSIDIAN))
-        {
-            event.setCancelled(true);
-        }*/
-    }
-
     public static void setZoneOwner(String zone, Player player)
     {
         plugin.getConfig().set("data." + zone, player.getUniqueId().toString());

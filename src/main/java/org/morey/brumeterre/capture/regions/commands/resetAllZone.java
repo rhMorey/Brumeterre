@@ -18,8 +18,18 @@ public class resetAllZone implements CommandExecutor {
             Player player = (Player) sender;
 
             // TOUTES LES ZONES
-            plugin.getConfig().set("data.test1", null);
-            plugin.getConfig().set("data.test2", null);
+            plugin.getConfig().set("data.diamant", null);
+            plugin.getConfig().set("data.or", null);
+            plugin.getConfig().set("data.fer", null);
+            plugin.getConfig().set("data.lapis", null);
+            plugin.getConfig().set("data.argile", null);
+            plugin.getConfig().set("data.sable", null);
+            plugin.getConfig().set("data.redstone", null);
+            plugin.getConfig().set("data.netherite", null);
+            plugin.getConfig().set("data.cuivre", null);
+            plugin.getConfig().set("data.emeraude", null);
+            plugin.getConfig().set("data.blazerod", null);
+            plugin.getConfig().set("data.charbon", null);
             // TOUTES LES ZONES
             plugin.saveConfig();
 
