@@ -2,7 +2,10 @@ package org.morey.brumeterre;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.morey.brumeterre.capture.capture;
+import org.morey.brumeterre.capture.point.commands.honneur;
+import org.morey.brumeterre.capture.point.economyTimer;
 import org.morey.brumeterre.capture.regions.*;
+import org.morey.brumeterre.capture.regions.commands.resetAllPoint;
 import org.morey.brumeterre.capture.regions.commands.resetAllZone;
 import org.morey.brumeterre.utils.enhanceServer;
 
@@ -16,7 +19,7 @@ public final class main extends JavaPlugin {
     //
     //
     //
-    public String version = "v0.2";
+    public String version = "v0.3";
     //
     //
     //
@@ -29,8 +32,11 @@ public final class main extends JavaPlugin {
         instance = this;
         plugin = this;
         log.info("Brumeterre started.");
+        economyTimer.startTimer();
 
         getServer().getPluginCommand("resetzone").setExecutor(new resetAllZone());
+        getServer().getPluginCommand("resetpoint").setExecutor(new resetAllPoint());
+        getServer().getPluginCommand("honneur").setExecutor(new honneur());
 
         getServer().getPluginManager().registerEvents(new enhanceServer(), this);
         getServer().getPluginManager().registerEvents(new capture(), this);

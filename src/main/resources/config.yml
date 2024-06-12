@@ -1,4 +1,6 @@
 data:
+  player:
+    uuid: point
   test1: uuid
   test2:
   zone_lapis:

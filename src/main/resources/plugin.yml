@@ -7,3 +7,11 @@ commands:
     description: Permet de reset les zones capturés
     permission-message: §cVous n'avez pas la permission.
     permission: brumeterre.resetzone
+  resetpoint:
+    description: Permet de reset les points
+    permission-message: §cVous n'avez pas la permission.
+    permission: brumeterre.resetpoint
+  honneur:
+    description: Permet d'avoir son honneur
+    permission-message: §cVous n'avez pas la permission.
+    permission: brumeterre.honneur

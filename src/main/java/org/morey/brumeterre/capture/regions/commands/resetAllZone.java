@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+import org.morey.brumeterre.capture.capture;
 
 import static org.morey.brumeterre.main.plugin;
 
@@ -30,6 +31,7 @@ public class resetAllZone implements CommandExecutor {
             plugin.getConfig().set("data.emeraude", null);
             plugin.getConfig().set("data.blazerod", null);
             plugin.getConfig().set("data.charbon", null);
+            plugin.getConfig().set("data.poudre", null);
             // TOUTES LES ZONES
             plugin.saveConfig();
 

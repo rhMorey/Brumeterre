@@ -13,6 +13,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.morey.brumeterre.capture.capture;
 
+import static org.morey.brumeterre.main.plugin;
+
 public class emeraude implements Listener {
 
     public static String regionName = "emeraude";
@@ -29,9 +31,19 @@ public class emeraude implements Listener {
         {
             if(capture.getZoneOwner(regionName) == null || !capture.getZoneOwner(regionName).equalsIgnoreCase(player.getUniqueId().toString()))
             {
+                if(capture.getZoneOwner(regionName) != null)
+                {
+                    plugin.getConfig().set("data.player." + capture.getZoneOwner(regionName), plugin.getConfig().getInt("data.player." + capture.getZoneOwner(regionName)) - 1);
+                    plugin.getConfig().set("data.player." + player.getUniqueId(), plugin.getConfig().getInt("data.player." + player.getUniqueId()) + 1);
+                }
+                else
+                {
+                    plugin.getConfig().set("data.player." + player.getUniqueId(), plugin.getConfig().getInt("data.player." + player.getUniqueId()) + 1);
+                }
                 capture.setZoneOwner(regionName, player);
                 event.setCancelled(true);
-                player.sendMessage("§7Vous avez capturé la zone§e " + regionName + "§7.");
+                //player.sendMessage("§7Vous avez capturé la zone§e " + regionName + "§7.");
+                capture.printZone(player, regionName);
             }
             else
             {

@@ -6,6 +6,7 @@ import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -41,4 +42,9 @@ public class capture implements Listener {
         }
         return null;
     }*/
+
+    public static void printZone(Player player, String zone)
+    {
+        Bukkit.broadcastMessage("\n§c§l ! §e" + player.getName() + " a pris le contrôle de la zone " + zone + "\n\n");
+    }
 }
