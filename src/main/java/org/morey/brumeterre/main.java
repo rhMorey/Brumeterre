@@ -54,6 +54,7 @@ public final class main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new blazerod(), this);
         getServer().getPluginManager().registerEvents(new charbon(), this);
         getServer().getPluginManager().registerEvents(new regionsSpecifications(), this);
+        getServer().getPluginManager().registerEvents(new economyTimer(), this);
 
 
     }

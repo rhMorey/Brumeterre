@@ -18,6 +18,8 @@ import org.bukkit.inventory.ItemStack;
 import org.morey.brumeterre.capture.capture;
 import org.morey.brumeterre.main;
 
+import java.util.Random;
+
 public class regionsSpecifications implements Listener {
 
     public void respawnTimer(Material oldBlock, Block block) {
@@ -47,7 +49,7 @@ public class regionsSpecifications implements Listener {
         ///
         if (event.getBlock().getType().equals(Material.OBSIDIAN)) return;
         if (regions.getRegion(diamant.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(diamant.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(diamant.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.DIAMOND_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -65,7 +67,7 @@ public class regionsSpecifications implements Listener {
         /// FER
         ///
         else if (regions.getRegion(fer.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(fer.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(fer.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.IRON_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -84,7 +86,7 @@ public class regionsSpecifications implements Listener {
         /// LAPIS LAZULI
         ///
         else if (regions.getRegion(lapis.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(lapis.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(lapis.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.LAPIS_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -103,7 +105,7 @@ public class regionsSpecifications implements Listener {
         /// CUIVRE
         ///
         else if (regions.getRegion(cuivre.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(cuivre.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(cuivre.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.COPPER_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -122,7 +124,7 @@ public class regionsSpecifications implements Listener {
         /// EMERAUDE
         ///
         else if (regions.getRegion(emeraude.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(emeraude.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(emeraude.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.EMERALD_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -141,7 +143,7 @@ public class regionsSpecifications implements Listener {
         /// NETHERITE
         ///
         else if (regions.getRegion(netherite.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(netherite.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(netherite.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.ANCIENT_DEBRIS)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -160,7 +162,7 @@ public class regionsSpecifications implements Listener {
         /// OR
         ///
         else if (regions.getRegion(or.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(or.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(or.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.GOLD_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -179,7 +181,7 @@ public class regionsSpecifications implements Listener {
         /// REDSTONE
         ///
         else if (regions.getRegion(redstone.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(redstone.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(redstone.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.REDSTONE_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -198,7 +200,7 @@ public class regionsSpecifications implements Listener {
         /// ARGILE
         ///
         else if (regions.getRegion(argile.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(argile.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(argile.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.CLAY)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -217,7 +219,7 @@ public class regionsSpecifications implements Listener {
         /// SABLE
         ///
         else if (regions.getRegion(sable.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(sable.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(sable.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.SAND)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -236,7 +238,7 @@ public class regionsSpecifications implements Listener {
         /// POUDRE
         ///
         else if (regions.getRegion(poudre.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(poudre.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(poudre.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.TUFF)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -255,7 +257,7 @@ public class regionsSpecifications implements Listener {
         /// CHARBON
         ///
         else if (regions.getRegion(charbon.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(charbon.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(charbon.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.COAL_ORE)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
@@ -274,11 +276,17 @@ public class regionsSpecifications implements Listener {
         /// BLAZEROD
         ///
         else if (regions.getRegion(blazerod.regionName).contains(blockloc.getBlockX(), blockloc.getBlockY(), blockloc.getBlockZ())) {
-            if (capture.getZoneOwner(blazerod.regionName).equalsIgnoreCase(player.getUniqueId().toString())) {
+            if (capture.getZoneOwner(blazerod.regionName).toString().equalsIgnoreCase(player.getUniqueId().toString())) {
                 if (block.getType().equals(Material.MAGMA_BLOCK)) {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;
                     respawnTimer(blocktype, block);
-                    player.getInventory().addItem(new ItemStack(Material.BLAZE_ROD, 1));
+                    Random random = new Random();
+                    int randomNumber = random.nextInt(100);
+                    //30% de drop une blazerod
+                    if(randomNumber <= 15)
+                    {
+                        player.getInventory().addItem(new ItemStack(Material.BLAZE_ROD, 1));
+                    }
                     event.setCancelled(true);
                 } else {
                     if(player.getGameMode().equals(GameMode.CREATIVE)) return;

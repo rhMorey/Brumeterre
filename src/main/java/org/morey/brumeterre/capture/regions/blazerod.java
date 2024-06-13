@@ -29,27 +29,7 @@ public class blazerod implements Listener {
 
         if(event.getBlock().getType().equals(Material.OBSIDIAN) && regions.getRegion(regionName).contains(blockLoc.getBlockX(), blockLoc.getBlockY(), blockLoc.getBlockZ()))
         {
-            if(capture.getZoneOwner(regionName) == null || !capture.getZoneOwner(regionName).equalsIgnoreCase(player.getUniqueId().toString()))
-            {
-                if(capture.getZoneOwner(regionName) != null)
-                {
-                    plugin.getConfig().set("data.player." + capture.getZoneOwner(regionName), plugin.getConfig().getInt("data.player." + capture.getZoneOwner(regionName)) - 1);
-                    plugin.getConfig().set("data.player." + player.getUniqueId(), plugin.getConfig().getInt("data.player." + player.getUniqueId()) + 1);
-                }
-                else
-                {
-                    plugin.getConfig().set("data.player." + player.getUniqueId(), plugin.getConfig().getInt("data.player." + player.getUniqueId()) + 1);
-                }
-                capture.setZoneOwner(regionName, player);
-                event.setCancelled(true);
-                //player.sendMessage("§7Vous avez capturé la zone§e " + regionName + "§7.");
-                capture.printZone(player, regionName);
-            }
-            else
-            {
-                player.sendMessage("§7Vous ne pouvez pas capturer votre propre zone.");
-                event.setCancelled(true);
-            }
+            capture.runCapture(event, player, regionName);
         }
     }
 
