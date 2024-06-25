@@ -1,4 +1,4 @@
-package org.morey.brumeterre.capture.point.commands;
+package org.morey.brumeterre.capture.economy.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

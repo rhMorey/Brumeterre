@@ -6,6 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.morey.brumeterre.item.resource.crystalium;
+import org.morey.brumeterre.item.weapon.emerald_sword;
 import org.morey.brumeterre.main;
 
 import static org.morey.brumeterre.main.plugin;
@@ -16,6 +18,16 @@ public class enhanceServer implements Listener {
     public void onConnect(PlayerJoinEvent event)
     {
         event.setJoinMessage("§a+ §7" + event.getPlayer().getName());
+
+        //
+        // TEST GIVE CUSTOM ITEM
+        //
+        event.getPlayer().getInventory().addItem(crystalium.customItem());
+
+        //
+        // TEST GIVE CUSTOM ITEM CUSTOMMODELDATA
+        //
+        event.getPlayer().getInventory().addItem(emerald_sword.customItem());
 
         if(plugin.getConfig().get("data.player." + event.getPlayer().getUniqueId()) == null)
         {

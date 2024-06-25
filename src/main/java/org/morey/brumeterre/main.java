@@ -2,12 +2,15 @@ package org.morey.brumeterre;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import org.morey.brumeterre.capture.capture;
-import org.morey.brumeterre.capture.point.commands.honneur;
-import org.morey.brumeterre.capture.point.economyTimer;
+import org.morey.brumeterre.capture.economy.commands.honneur;
+import org.morey.brumeterre.capture.economy.economyTimer;
 import org.morey.brumeterre.capture.regions.*;
 import org.morey.brumeterre.capture.regions.commands.resetAllPoint;
 import org.morey.brumeterre.capture.regions.commands.resetAllZone;
+import org.morey.brumeterre.npc.inventory.testInventory;
+import org.morey.brumeterre.npc.npcSys;
 import org.morey.brumeterre.utils.enhanceServer;
+import org.morey.brumeterre.utils.whoisCmds;
 
 import java.util.logging.Logger;
 
@@ -19,7 +22,7 @@ public final class main extends JavaPlugin {
     //
     //
     //
-    public String version = "v0.3";
+    public String version = "v0.4";
     //
     //
     //
@@ -37,6 +40,7 @@ public final class main extends JavaPlugin {
         getServer().getPluginCommand("resetzone").setExecutor(new resetAllZone());
         getServer().getPluginCommand("resetpoint").setExecutor(new resetAllPoint());
         getServer().getPluginCommand("honneur").setExecutor(new honneur());
+        getServer().getPluginCommand("whois").setExecutor(new whoisCmds());
 
         getServer().getPluginManager().registerEvents(new enhanceServer(), this);
         getServer().getPluginManager().registerEvents(new capture(), this);
@@ -55,6 +59,8 @@ public final class main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new charbon(), this);
         getServer().getPluginManager().registerEvents(new regionsSpecifications(), this);
         getServer().getPluginManager().registerEvents(new economyTimer(), this);
+        getServer().getPluginManager().registerEvents(new npcSys(), this);
+        getServer().getPluginManager().registerEvents(new testInventory(), this);
 
 
     }

@@ -1,12 +1,15 @@
-package org.morey.brumeterre.capture.point;
+package org.morey.brumeterre.capture.economy;
 
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.morey.brumeterre.main;
 
@@ -68,6 +71,35 @@ public class economyTimer implements Listener {
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§6Marque d'honneur §7§l» §e" + plugin.getConfig().getInt("data.money." + uuid) + "§c(-" + amountInteger + ")"));
     }
 
+    public static double getHonorUUID(UUID uuid)
+    {
+        return plugin.getConfig().getDouble("data.money." + uuid);
+    }
+
+    public static int getPlayerZone(UUID uuid)
+    {
+        return plugin.getConfig().getInt("data.player." + uuid);
+    }
+
+    public static void purchaseItem(InventoryClickEvent event, ItemStack item, UUID uuid, int price)
+    {
+        event.setCancelled(true);
+        Player player = Bukkit.getPlayer(uuid);
+        if(getHonorUUID(uuid) < price)
+        {
+            player.sendMessage("§7Fonds insuffisant.");
+            player.closeInventory();
+        }
+        else
+        {
+            player.getInventory().addItem(item);
+            player.closeInventory();
+            player.sendMessage("§7Achat effectué: " + item.getItemMeta().getDisplayName());
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1, 2);
+            removeHonorPointUUID(uuid, price);
+        }
+    }
+
     public static void startTimer() {
         //Bukkit.getScheduler().cancelTasks(main.getInstance());
         new BukkitRunnable() {
@@ -79,11 +111,12 @@ public class economyTimer implements Listener {
                     {
                         if(plugin.getConfig().getInt("data.player." + player.getUniqueId()) >= 1)
                         {
+                            getLogger().info("ajout à " + player.getUniqueId() + " : " + moneyFlat * plugin.getConfig().getInt("data.player." + player.getUniqueId()));
                             addHonorPoint(player, moneyFlat * plugin.getConfig().getInt("data.player." + player.getUniqueId()));
                         }
                     }
                 }
-                getLogger().info("temps: " + secondsPassed);
+                //getLogger().info("temps: " + secondsPassed);
                 if (secondsPassed >= maxTime) { // Si 6 minutes se sont écoulées (6 minutes * 60 secondes)
                     cancel(); // Arrêtez le timer
                     getLogger().info("Timer terminé");

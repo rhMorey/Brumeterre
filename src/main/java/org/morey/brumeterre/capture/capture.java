@@ -1,20 +1,10 @@
 package org.morey.brumeterre.capture;
 
-import com.sk89q.worldedit.bukkit.BukkitAdapter;
-import com.sk89q.worldedit.world.World;
-import com.sk89q.worldguard.WorldGuard;
-import com.sk89q.worldguard.protection.managers.RegionManager;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion;
-import com.sk89q.worldguard.protection.regions.RegionContainer;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.morey.brumeterre.capture.point.economyTimer;
+import org.morey.brumeterre.capture.economy.economyTimer;
 
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -35,21 +25,10 @@ public class capture implements Listener {
         return (String) plugin.getConfig().get("data." + zone);
     }
 
-    /*public String getZone(Player player, RegionManager regions, String region)
-    {
-        Location loc = player.getLocation();
-        ProtectedRegion pregion = regions.getRegion(region);
-        if(regions.getRegion(region).contains(loc.getBlockX(), loc.blockY(), loc.blockZ()))
-        {
-            return pregion.toString();
-        }
-        return null;
-    }*/
-
     public static Logger log = getLogger();
     public static void printZone(Player player, String zone)
     {
-        Bukkit.broadcastMessage("\n§c§l ! §e" + player.getName() + " a pris le contrôle de la zone " + zone + "\n\n");
+        Bukkit.broadcastMessage("\n§c§l ! §e" + player.getName() + " a pris le contrôle de la zone " + zone + "\n");
     }
 
     public static void runCapture(BlockBreakEvent event, Player player, String regionName)
@@ -71,13 +50,22 @@ public class capture implements Listener {
                 plugin.getConfig().set("data.player." + player.getUniqueId(), plugin.getConfig().getInt("data.player." + player.getUniqueId()) + 1);
                 plugin.saveConfig();
             }
-            economyTimer.removeHonorPointUUID(UUID.fromString(capture.getZoneOwner(regionName)), economyTimer.lostOnCapture);
-            log.info("uuid avant: " + UUID.fromString(capture.getZoneOwner(regionName)) + " soustrait: " + economyTimer.lostOnCapture);
-            capture.setZoneOwner(regionName, player);
-            log.info("uuid après: " + UUID.fromString(capture.getZoneOwner(regionName)) + " ajoute: " + economyTimer.winOnCapture);
-            economyTimer.addHonorPointUUID(UUID.fromString(capture.getZoneOwner(regionName)), economyTimer.winOnCapture);
+            if(capture.getZoneOwner(regionName) == null)
+            {
+                capture.setZoneOwner(regionName, player);
+                log.info("uuid après: " + UUID.fromString(capture.getZoneOwner(regionName)) + " ajoute: " + economyTimer.winOnCapture);
+                economyTimer.addHonorPointUUID(UUID.fromString(capture.getZoneOwner(regionName)), economyTimer.winOnCapture);
+            }
+            else
+            {
+                economyTimer.removeHonorPointUUID(UUID.fromString(capture.getZoneOwner(regionName)), economyTimer.lostOnCapture);
+                log.info("uuid avant: " + UUID.fromString(capture.getZoneOwner(regionName)) + " soustrait: " + economyTimer.lostOnCapture);
+                capture.setZoneOwner(regionName, player);
+                log.info("uuid après: " + UUID.fromString(capture.getZoneOwner(regionName)) + " ajoute: " + economyTimer.winOnCapture);
+                economyTimer.addHonorPointUUID(UUID.fromString(capture.getZoneOwner(regionName)), economyTimer.winOnCapture);
+            }
             event.setCancelled(true);
-            //player.sendMessage("§7Vous avez capturé la zone§e " + regionName + "§7.");jhgf
+            //player.sendMessage("§7Vous avez capturé la zone§e " + regionName + "§7.");
             capture.printZone(player, regionName);
         }
         else

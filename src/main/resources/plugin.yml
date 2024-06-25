@@ -15,3 +15,7 @@ commands:
     description: Permet d'avoir son honneur
     permission-message: §cVous n'avez pas la permission.
     permission: brumeterre.honneur
+  whois:
+    description: Permet d'avoir des informations sur un joueur
+    permission-message: §cVous n'avez pas la permission.
+    permission: brumeterre.whois
